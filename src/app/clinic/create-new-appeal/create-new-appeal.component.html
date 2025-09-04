@@ -1,0 +1,41 @@
+<div class="appeal-form">
+  <form>
+    <div class="form-row">
+      <div>
+    <label for="doctors_input">Лікар</label>
+    <input list="doctors" class="form-control" placeholder="Лікар" type="text" id="doctors_input">
+    <datalist id="doctors"></datalist>
+      </div>
+
+      <div>
+    <label for="patients_input">Пацієнт</label>
+    <input list="patients" class="form-control" placeholder="Пацієнт" type="text" id="patients_input">
+    <datalist id="patients"></datalist>
+    </div>
+
+      <div>
+    <label for="date_input">Дата</label>
+    <input type="date" class="form-control" name="date" id="date_input">
+      </div>
+    </div>
+
+    <label for="diagnosis_input">Діагноз</label>
+    <input type="text" name="title" placeholder="Діагноз" id="diagnosis_input">
+
+    <label for="diagnosis_description_input">Опис діагнозу</label>
+    <textarea name="description" placeholder="Опис діагнозу" id="diagnosis_description_input"></textarea>
+
+    <label for="prescription_input">Опис лікування</label>
+    <textarea name="description" placeholder="Опис лікування" id="prescription_input"></textarea>
+
+    <label for="additional_services_input">Додаткові процедури</label>
+    <select name="title" placeholder="Додаткові процедури" id="additional_services_input" multiple>
+      <option></option>
+    </select>
+
+    <div class="form-footer">
+    <label>Загальна вартість хх.хх грн</label>
+    <button>Створити звернення</button>
+    </div>
+  </form>
+</div>

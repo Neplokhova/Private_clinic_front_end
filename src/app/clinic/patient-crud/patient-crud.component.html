@@ -1,0 +1,6 @@
+<button matButton="tonal" >Пошук</button>
+
+<app-patients-table (selectionChange)="onSelectionChange($event)"></app-patients-table>
+<button matButton="tonal" (click)="openCreateDialog()">Додати пацієнта</button>
+<button matButton="tonal" (click)="deleteSelectedPatients()" >Видалити пацієнта</button>
+

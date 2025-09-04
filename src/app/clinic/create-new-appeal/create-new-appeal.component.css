@@ -1,0 +1,93 @@
+.appeal-form {
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 300;
+  box-sizing: border-box;
+  margin: 10px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #333;
+}
+
+.appeal-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.appeal-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 рівні колонки */
+  gap: 15px;
+}
+
+.appeal-form label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 12px 0 0;
+  display: block;
+}
+
+.appeal-form input,
+.appeal-form textarea,
+.appeal-form select {
+  width: 100%;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  margin: 10px 10px 10px 0;
+  background: #F7F9FD;
+  border: 1px solid #D9DEEA;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #333;
+  transition: background 0.2s, color 0.2s;
+}
+
+.appeal-form input:focus,
+.appeal-form textarea:focus,
+.appeal-form select:focus {
+  border-color: #222;
+  box-shadow:  0px 4px 4px -4px #0C0C0D0D, 0px 16px 32px -4px #0C0C0D1A;
+  outline: none;
+}
+
+.appeal-form textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.appeal-form button {
+  align-self: flex-end;
+  padding: 12px 16px;
+  background: #CBD6E8;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.appeal-form button:hover {
+  scale: 1.05;
+  box-shadow:  0px 4px 4px -4px #0C0C0D0D, 0px 16px 32px -4px #0C0C0D1A;
+  transition: background 0.2s, color 0.2s;
+
+}
+
+.appeal-form .form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.appeal-form .form-footer label {
+  color: #444;
+}

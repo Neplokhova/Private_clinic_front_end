@@ -1,0 +1,36 @@
+<div class="table-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Last Name -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+      <td mat-cell *matCellDef="let patient">{{patient.lastName}}</td>
+    </ng-container>
+
+    <!-- First Name -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+      <td mat-cell *matCellDef="let patient">{{patient.firstName}}</td>
+    </ng-container>
+
+    <!-- Middle Name -->
+    <ng-container matColumnDef="middleName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Middle Name</th>
+      <td mat-cell *matCellDef="let patient">{{patient.middleName}}</td>
+    </ng-container>
+
+    <!-- Birth Year -->
+    <ng-container matColumnDef="birthYear">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Birth Year</th>
+      <td mat-cell *matCellDef="let patient">{{patient.birthYear}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="togglePatientSelection(row)"
+        (dblclick)="openPatientDetails(row)"
+        [class.selected]="selectedPatients.includes(row)">
+    </tr>
+
+  </table>
+</div>

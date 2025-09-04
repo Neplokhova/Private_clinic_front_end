@@ -1,0 +1,40 @@
+.table-container {
+  width: 95%;
+  margin: 20px auto;
+  max-height: 500px;
+  overflow-y: auto;   /* скрол працює на контейнері */
+  padding: 0;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+table.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Заголовки */
+th.mat-header-cell {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px 16px;
+}
+
+/* Клітинки */
+td.mat-cell {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Наведення рядків */
+tr.mat-row:hover td.mat-cell {
+  background-color: #EFF2FB;
+}
+
+/* Вибрані рядки */
+tr.mat-row.selected td.mat-cell {
+  background-color: #CBD6E8 !important;
+}

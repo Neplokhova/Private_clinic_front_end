@@ -1,0 +1,36 @@
+    <mat-nav-list>
+      <div class="menu-top">
+      <a mat-list-item (click)="navigateToPatientCrud()" [class.active]="activeMenu === 'patients'">
+        <mat-icon>people</mat-icon>
+        Пацієнти
+      </a>
+      <a mat-list-item (click)="navigateToDoctorsCrud()" [class.active]="activeMenu === 'doctors'">
+        <mat-icon>medical_services</mat-icon>
+        Лікарі
+      </a>
+
+      <a mat-list-item (click)="navigateToServicesCrud()" [class.active]="activeMenu === 'services'">
+        <mat-icon>list</mat-icon>
+        Послуги
+      </a>
+      </div>
+
+      <div class="menu-bottom">
+      <a mat-list-item (click)="navigateToNewAppeal()" [class.active]="activeMenu === 'new_appeal'">
+        <mat-icon>add</mat-icon>
+        Створити нове звернення
+      </a>
+
+
+      <a mat-list-item (click)="navigateToFinReport()" [class.active]="activeMenu === 'fin_report'">
+        <mat-icon>assessment</mat-icon>
+        Створити фінансовий звіт
+      </a>
+      </div>
+    </mat-nav-list>
+
+<!--<mat-nav-list>-->
+<!--  <a mat-list-item routerLink="/patients">Пацієнти</a>-->
+<!--  <a mat-list-item routerLink="/doctors">Лікарі</a>-->
+<!--  <a mat-list-item routerLink="/servises">Послуги</a>-->
+<!--</mat-nav-list>-->
