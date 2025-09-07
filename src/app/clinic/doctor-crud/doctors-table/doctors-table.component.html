@@ -1,0 +1,42 @@
+<div class="table-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Прізвище</th>
+      <td mat-cell *matCellDef="let doctor">{{doctor.lastName}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ім'я</th>
+      <td mat-cell *matCellDef="let doctor">{{doctor.firstName}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="middleName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>По-батькові</th>
+      <td mat-cell *matCellDef="let doctor">{{doctor.middleName}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="speciality">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Спеціальність</th>
+      <td mat-cell *matCellDef="let doctor">{{doctor.speciality}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Категорія</th>
+      <td mat-cell *matCellDef="let doctor">{{doctor.category}}</td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+        (dblclick)="onRowDblClick(row)">
+    </tr>
+
+  </table>
+</div>

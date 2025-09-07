@@ -1,14 +1,3 @@
-div {
-  height: 500px;
-  weight: 300px;
-  padding: 8px;
-  border-radius: 10px;
-  font-weight: 300;
-  box-sizing: border-box;
-  margin: 10px 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: #333;
+label {
+  font-size: 114px !important;
 }

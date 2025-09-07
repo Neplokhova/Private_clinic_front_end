@@ -1,0 +1,35 @@
+<div class="modal-backdrop">
+
+  <div class="modal">
+    <div class="modal-header">
+      <span>Редагувати послугу</span>
+      <button class="close-btn" (click)="onClose()">✖</button>
+    </div>
+
+    <form [formGroup]="serviceForm" class="service-form">
+      <div class="form-group">
+        <label for="name_input">Назва</label>
+        <input id="name_input" formControlName="name" placeholder="Назва" required>
+      </div>
+
+      <div class="form-group">
+        <label for="category_input">Категорія</label>
+        <select id="category_input" formControlName="category" required>
+          <option value="Консультація" disabled>Консультація</option>
+          <option value="Процедура">Процедура</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Вартість (грн)</label>
+        <input id="price" formControlName="price" placeholder="Вартість" required>
+      </div>
+
+
+      <div class="form-footer">
+        <button type="button" (click)="onDelete()">Видалити послугу</button>
+        <button type="button" (click)="onSave()">Зберегти зміни</button>
+      </div>
+    </form>
+  </div>
+</div>

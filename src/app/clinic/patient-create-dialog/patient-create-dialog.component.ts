@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 import { PatientService } from '../../services/patient-service.service';
-import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatIconButton} from "@angular/material/button";
+import {MatDialogClose, MatDialogRef, MatDialogTitle} from "@angular/material/dialog";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-patient-create-dialog',
+  selector: 'app-patient-create',
   templateUrl: './patient-create-dialog.component.html',
   imports: [
-    MatLabel,
-    MatFormField,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconButton,
+    MatDialogClose,
+    MatDialogTitle,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   standalone: true
 })
@@ -19,12 +26,12 @@ export class PatientCreateDialogComponent {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<PatientCreateDialogComponent>,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private dialogRef: MatDialogRef<PatientCreateDialogComponent>
   ) {
     this.patientForm = this.fb.group({
-      firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      firstName: ['', Validators.required],
       middleName: [''],
       birthYear: ['', [Validators.required, Validators.min(1900), Validators.max(new Date().getFullYear())]]
     });
@@ -33,8 +40,11 @@ export class PatientCreateDialogComponent {
   onSubmit() {
     if (this.patientForm.valid) {
       this.patientService.createPatient(this.patientForm.value).subscribe({
-        next: (res) => this.dialogRef.close(res),
-        error: (err) => console.error('Помилка створення пацієнта', err)
+        next: (res) => {
+          console.log('Пацієнт створений:', res);
+          this.dialogRef.close(res);
+        },
+        error: (err) => console.error('Помилка при створенні пацієнта', err)
       });
     }
   }

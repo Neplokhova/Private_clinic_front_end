@@ -1,0 +1,34 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <span>Створити послугу</span>
+      <button class="close-btn" (click)="onClose()">✖</button>
+    </div>
+
+    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()" class="service-form">
+      <div class="form-group">
+        <label for="name_input">Назва</label>
+        <input id="name_input" formControlName="name" placeholder="Назва" required>
+      </div>
+
+      <div class="form-group">
+        <label for="category_input">Категорія</label>
+        <select id="category_input" formControlName="category" required>
+          <option value="Консультація" disabled>Консультація</option>
+          <option value="Процедура" selected>Процедура</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Вартість (грн)</label>
+        <input id="price" formControlName="price" placeholder="Вартість" required>
+      </div>
+
+
+      <div class="form-footer">
+        <button type="submit" [disabled]="serviceForm.invalid">Створити</button>
+      </div>
+    </form>
+  </div>
+</div>
+

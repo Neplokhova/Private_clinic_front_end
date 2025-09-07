@@ -1,0 +1,35 @@
+<div class="patient-edit-form">
+<h2 mat-dialog-title>
+  Редагування пацієнта
+  <button mat-icon-button (click)="close()" style="float: right;">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+
+<mat-dialog-content>
+   <mat-form-field appearance="fill">
+    <mat-label>Прізвище</mat-label>
+    <input matInput [(ngModel)]="patient.lastName">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ім'я</mat-label>
+    <input matInput [(ngModel)]="patient.firstName">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>По-батькові</mat-label>
+    <input matInput [(ngModel)]="patient.middleName">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Рік народження</mat-label>
+    <input matInput type="number" [(ngModel)]="patient.birthYear">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="deletePatient()">Видалити пацієнта</button>
+  <button mat-raised-button color="primary" (click)="saveChanges()">Зберегти зміни</button>
+</mat-dialog-actions>
+</div>

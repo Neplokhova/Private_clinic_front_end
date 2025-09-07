@@ -1,0 +1,135 @@
+.finance-report-form {
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 300;
+  box-sizing: border-box;
+  margin: 10px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #333;
+}
+
+.finance-report-form h2 {
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+
+.finance-report-form .filter-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.finance-report-form .filters {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+
+.finance-report-form .filters > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+}
+
+
+.finance-report-form label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+
+.finance-report-form input,
+.finance-report-form select {
+  width: 100%;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  background: #F7F9FD;
+  border: 1px solid #D9DEEA;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #333;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.finance-report-form input:focus,
+.finance-report-form select:focus {
+  border-color: #222;
+  box-shadow:  0px 4px 4px -4px #0C0C0D0D, 0px 16px 32px -4px #0C0C0D1A;
+  outline: none;
+}
+
+
+.finance-report-form button {
+  align-self: flex-end;
+  padding: 12px 16px;
+  background: #CBD6E8;
+  color: #333;
+  border: 1px solid #CBD6E8;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 25px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: none;
+}
+
+.finance-report-form button:hover {
+  transform: scale(1.05);
+  box-shadow:  0px 4px 4px -4px #0C0C0D0D, 0px 16px 32px -4px #0C0C0D1A;
+}
+
+
+.table-container {
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  max-height: 400px;
+  overflow-y: auto;
+  display: block;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 13px;
+}
+
+.table-container th {
+  background-color: #F7F9FD;
+  font-weight: 600;
+}
+
+.table-container tfoot td {
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fafafa;
+}
+
+.mat-footer-row {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: #f1f1f1;
+}
+

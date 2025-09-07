@@ -1,1 +1,19 @@
-<p>doctor-crud works!</p>
+
+<app-doctors-table (doctorDblClick)="openUpdateDoctorModal($event)"></app-doctors-table>
+<app-update-doctor-component
+  *ngIf="showUpdateDoctorModal"
+  [doctor]="selectedDoctor!"
+  (close)="closeUpdateDoctorModal()"
+  (doctorUpdated)="onDoctorUpdated($event)"
+  (doctorDeleted)="onDoctorDeleted($event)">
+</app-update-doctor-component>
+<app-doctor-create-modal
+  *ngIf="showDoctorModal"
+  (close)="closeDoctorModal()"
+  (doctorCreated)="onDoctorCreated($event)">
+</app-doctor-create-modal>
+<div class="bottom-buttons">
+  <button matButton="tonal" (click)="openDoctorModal()">Додати лікаря</button>
+
+</div>
+

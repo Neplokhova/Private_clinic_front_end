@@ -1,1 +1,17 @@
-<p>services-crud works!</p>
+<app-service-table (serviceDblClick)="openUpdateServiceModal($event)"></app-service-table>
+
+<app-update-service *ngIf="showUpdateServiceModal"
+                    [service]="selectedService!"
+                    (close)="closeUpdateServiceModal()"
+                    (serviceUpdated)="onServiceUpdated($event)"
+                    (serviceDeleted)="onServiceDeleted($event)"></app-update-service>
+
+<app-create-new-service *ngIf="showServiceModal"
+                        (close)="closeServiceModal()"
+                        (serviceCreated)="onServiceCreated()"></app-create-new-service>
+
+<div class="bottom-buttons">
+  <button matButton="tonal" (click)="openServiceModal()">Додати послугу</button>
+
+</div>
+

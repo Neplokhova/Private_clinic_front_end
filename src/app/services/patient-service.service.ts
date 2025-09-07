@@ -15,8 +15,13 @@ export class PatientService {
     return this.http.get<IPatient[]>(this.apiUrl);
   }
 
-  deletePatients(ids: string[]): Observable<any> {
-    return this.http.delete(this.apiUrl, { body: { ids } });
+  deletePatient(id: string | null): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+
+  updatePatient(patient: IPatient): Observable<IPatient> {
+    return this.http.put<IPatient>(`${this.apiUrl}/${patient.id}`, patient);
   }
 
   createPatient(patient: IPatient): Observable<IPatient> {

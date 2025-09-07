@@ -3,39 +3,46 @@
     <div class="form-row">
       <div>
     <label for="doctors_input">Лікар</label>
-    <input list="doctors" class="form-control" placeholder="Лікар" type="text" id="doctors_input">
-    <datalist id="doctors"></datalist>
+        <select id="doctors_input" [(ngModel)]="selectedDoctorId" name="doctor" class="form-control">
+          <option *ngFor="let doctor of doctors" [value]="doctor.id">
+            {{doctor.lastName}} {{doctor.firstName}} {{doctor.middleName}}  -- {{doctor.speciality}}
+          </option>
+        </select>
       </div>
 
       <div>
     <label for="patients_input">Пацієнт</label>
-    <input list="patients" class="form-control" placeholder="Пацієнт" type="text" id="patients_input">
-    <datalist id="patients"></datalist>
+        <select id="patients_input" [(ngModel)]="selectedPatientId" name="patient" class="form-control">
+          <option *ngFor="let patient of patients" [value]="patient.id">
+            {{patient.lastName}} {{patient.firstName}} {{patient.middleName}}
+          </option>
+        </select>
     </div>
 
       <div>
     <label for="date_input">Дата</label>
-    <input type="date" class="form-control" name="date" id="date_input">
+    <input type="date" [(ngModel)]="dateString" class="form-control" name="date" id="date_input" [ngModelOptions]="{standalone: true}">
       </div>
     </div>
 
     <label for="diagnosis_input">Діагноз</label>
-    <input type="text" name="title" placeholder="Діагноз" id="diagnosis_input">
+    <input type="text" [(ngModel)]="diagnosis" name="diagnosis" placeholder="Діагноз" id="diagnosis_input">
 
     <label for="diagnosis_description_input">Опис діагнозу</label>
-    <textarea name="description" placeholder="Опис діагнозу" id="diagnosis_description_input"></textarea>
+    <textarea [(ngModel)]="diagnosisDescription" name="diagnosisDescription" placeholder="Опис діагнозу" id="diagnosis_description_input"></textarea>
 
     <label for="prescription_input">Опис лікування</label>
-    <textarea name="description" placeholder="Опис лікування" id="prescription_input"></textarea>
+    <textarea [(ngModel)]="treatmentDescription" name="treatmentDescription" placeholder="Опис лікування" id="prescription_input"></textarea>
 
     <label for="additional_services_input">Додаткові процедури</label>
-    <select name="title" placeholder="Додаткові процедури" id="additional_services_input" multiple>
-      <option></option>
+    <select id="additional_services_input" multiple (change)="onServicesChange($event)">
+      <option *ngFor="let service of services" [value]="service.id">
+        {{service.name}}
+      </option>
     </select>
 
     <div class="form-footer">
-    <label>Загальна вартість хх.хх грн</label>
-    <button>Створити звернення</button>
+    <button type="button" (click)="createAppointment()">Створити звернення</button>
     </div>
   </form>
 </div>

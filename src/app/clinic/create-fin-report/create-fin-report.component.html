@@ -1,1 +1,64 @@
-<p>create-fin-report works!</p>
+<div class="finance-report-form">
+  <h2>Фінансовий звіт</h2>
+
+  <div class="filters">
+    <div>
+      <label for="startDate">Початкова дата:</label>
+      <input id="startDate" type="date" [(ngModel)]="startDate" name="startDate">
+    </div>
+
+    <div>
+      <label for="endDate">Кінцева дата:</label>
+      <input id="endDate" type="date" [(ngModel)]="endDate" name="endDate">
+    </div>
+
+    <div>
+      <label for="type">Тип послуги:</label>
+      <select id="type" [(ngModel)]="category" name="category">
+        <option value="all" selected>Усі</option>
+        <option value="consultation">Консультації</option>
+        <option value="procedure">Процедури</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-container mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="serviceName">
+    <th mat-header-cell *matHeaderCellDef>Послуга</th>
+    <td mat-cell *matCellDef="let row" >{{row.serviceName}}</td>
+    <td mat-footer-cell *matFooterCellDef>Кількість наданних послуг: {{ totalCount }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="serviceCategory">
+    <th mat-header-cell *matHeaderCellDef style ="text-align: center">Тип</th>
+    <td mat-cell *matCellDef="let row">{{row.serviceCategory}}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef style ="text-align: center">Дата</th>
+    <td mat-cell *matCellDef="let row" style ="text-align: center">{{row.date | date:'shortDate'}}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef style ="text-align: center">Ціна (грн)</th>
+    <td mat-cell *matCellDef="let row" style ="text-align: center">{{row.price }}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ totalPrice}}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="discountedPrice">
+    <th mat-header-cell *matHeaderCellDef style ="text-align: center">Ціна зі знижкою (грн)</th>
+    <td mat-cell *matCellDef="let row" style ="text-align: center">{{row.discountedPrice}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{ totalDiscountedPrice}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table>
+  </div>
+  <button mat-raised-button color="primary" (click)="loadReport()">Створити новий звіт</button>
