@@ -1,7 +1,7 @@
 <div class="patient-edit-form" *ngIf="patient">
   <h2>Редагування пацієнта</h2>
 
-  <!-- ПІБ у рядку -->
+
   <div class="form-row">
     <div class="form-group">
       <label>Прізвище</label>
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <!-- Рік народження + Знижка -->
+
   <div class="form-row">
     <div class="form-group short">
       <label>Рік народження</label>
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <!-- Звернення -->
+
   <h3>Звернення пацієнта</h3>
   <div class="accordion-container">
     <mat-accordion>
@@ -58,7 +58,7 @@
     </mat-accordion>
   </div>
 
-  <!-- Кнопки завжди внизу -->
+
   <div class="buttons">
     <button (click)="deletePatient()">Видалити пацієнта</button>
     <button (click)="saveChanges()">Зберегти зміни</button>

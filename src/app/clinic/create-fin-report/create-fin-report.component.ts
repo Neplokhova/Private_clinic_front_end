@@ -12,6 +12,9 @@ import { ReportService } from '../../services/report.service';
 import {IProvidedService} from "../../provided_service_model";
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { ViewChild } from '@angular/core';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import {robotoNormal, robotoBold} from "../../../assets/roboto";
 
 @Component({
   selector: 'app-create-fin-report',
@@ -92,6 +95,53 @@ export class CreateFinReportComponent implements OnInit {
     this.totalCount = data.length;
     this.totalPrice = data.reduce((sum, s) => sum + s.price, 0);
     this.totalDiscountedPrice = data.reduce((sum, s) => sum + s.discountedPrice, 0);
+  }
+
+  downloadPDF() {
+    const doc = new jsPDF();
+
+    doc.addFileToVFS('Roboto-Regular.ttf', robotoNormal);
+    doc.addFont('Roboto-Regular.ttf', 'Roboto', 'normal');
+    doc.addFileToVFS('Roboto-Bold.ttf', robotoBold);
+    doc.addFont('Roboto-Bold.ttf', 'Roboto', 'bold');
+    doc.setFont('Roboto', 'normal');
+
+
+    doc.text(`Фінансовий звіт `, 16,  10);
+
+
+    const tableColumn = ['Послуга', 'Тип', 'Дата', 'Ціна', 'Ціна зі знижкою'];
+    const tableRows: any[] = [];
+
+    this.dataSource.data.forEach(item => {
+      const row = [
+        item.serviceName,
+        item.category,
+        new Date(item.date).toLocaleDateString(),
+        item.price.toFixed(2),
+        item.discountedPrice.toFixed(2)
+      ];
+      tableRows.push(row);
+    });
+
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 30,
+      styles: { font: 'Roboto', fontStyle: 'normal', fontSize: 10, cellPadding: 2 },
+      headStyles: { font: 'Roboto', fontStyle: 'bold' }
+    });
+
+
+    const finalY = (doc as any).lastAutoTable.finalY || 30;
+    doc.setFontSize(12);
+    doc.text( ` `, 14, finalY + 10);
+    doc.text(`Кількість наданих послуг: ${this.totalCount}`, 14, finalY + 10);
+    doc.text(`Сума: ${this.totalPrice.toFixed(2)} грн`, 14, finalY + 16);
+    doc.text(`Сума зі знижкою: ${this.totalDiscountedPrice.toFixed(2)} грн`, 14, finalY + 22);
+
+    doc.save('financial_report.pdf');
   }
 
 }

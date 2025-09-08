@@ -61,4 +61,10 @@
   <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 </table>
   </div>
+
+  <div class="buttons">
+  <button mat-raised-button color="accent" (click)="downloadPDF()">
+    Завантажити PDF
+  </button>
   <button mat-raised-button color="primary" (click)="loadReport()">Створити новий звіт</button>
+  </div>
