@@ -1,0 +1,58 @@
+.main-page {
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin: 10px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #333;
+  background: #fff;
+}
+
+.main-page h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a3e6e;
+  margin: 10px 0 15px;
+  text-align: center;
+}
+
+.main-page p {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.main-page ul {
+  margin: 0 0 10px 18px;
+  padding: 0;
+}
+
+.main-page li {
+  margin-bottom: 6px;
+}
+
+.main-page .note {
+  background: #F7F9FD;
+  border: 1px solid #D9DEEA;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+}
+
+.main-page .highlight {
+  font-weight: 600;
+  color: #444;
+}
+
+.main-page footer {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 500;
+  color: #555;
+  font-size: 16px;
+}

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import {MatNavList} from "@angular/material/list";
 import {MatIcon} from "@angular/material/icon";
-import {MatSidenav, MatSidenavContainer} from "@angular/material/sidenav";
-import {MatDivider} from "@angular/material/divider";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,10 +8,7 @@ import {Router} from "@angular/router";
   standalone: true,
   imports: [
     MatNavList,
-    MatIcon,
-    MatSidenav,
-    MatSidenavContainer,
-    MatDivider
+    MatIcon
   ],
   templateUrl: './navigation-menu.component.html',
   styleUrl: './navigation-menu.component.css'
@@ -23,6 +18,11 @@ export class NavigationMenuComponent {
   activeMenu: string = '';
 
   constructor (private router: Router){};
+
+  public navigateToMainPage(): void {
+    this.activeMenu = 'mainPage';
+    this.router.navigate(['main']);
+  }
 
   public navigateToPatientCrud(): void {
     this.activeMenu = 'patients';

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {IService} from "../service_model";
 import {IAppointment, INewAppointmentDto} from "../appointment_model";
 
 
@@ -16,5 +15,9 @@ export class AppointmentService {
 
   createAppointment(dto: INewAppointmentDto): Observable<IAppointment> {
     return this.http.post<IAppointment>(this.apiUrl, dto);
+  }
+
+  getAppointmentsByPatient(patientId: string): Observable<IAppointment[]> {
+    return this.http.get<IAppointment[]>(`${this.apiUrl}/patient/${patientId}`);
   }
 }

@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {IDoctor} from "../../doctor_model";
 import {DoctorService} from "../../services/doctor.service";
-import {MatDialog} from "@angular/material/dialog";
 import {DoctorsTableComponent} from "./doctors-table/doctors-table.component";
 import {CreateNewDoctorComponent} from "./create-new-doctor/create-new-doctor.component";
 import {CommonModule} from "@angular/common";

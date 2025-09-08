@@ -9,6 +9,7 @@ import {IService} from "../../service_model";
 import {ServiceService} from "../../services/service.service";
 import {AppointmentService} from "../../services/appointment.service";
 import {INewAppointmentDto} from "../../appointment_model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-new-appeal',
@@ -36,7 +37,8 @@ export class CreateNewAppealComponent implements OnInit {
   constructor(private doctorService: DoctorService,
               private patientService: PatientService,
               private serviceService: ServiceService,
-              private appointmentService: AppointmentService) {}
+              private appointmentService: AppointmentService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.loadDoctors();
@@ -95,6 +97,8 @@ export class CreateNewAppealComponent implements OnInit {
         console.log('Звернення створено', res);
         console.log(newAppointment.date);
         alert('Звернення успішно створено!');
+        this.router.navigate(['/patients', this.selectedPatientId]);
+
         this.selectedDoctorId = null;
         this.selectedPatientId = null;
         this.selectedServiceId = [];

@@ -6,8 +6,7 @@ import { IPatient } from '../../../patient_model';
 import { PatientService } from '../../../services/patient-service.service';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import { MatDialog } from '@angular/material/dialog';
-import {PatientDialogComponent} from "../patient-dialog/patient-dialog.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-patients-table',
@@ -24,7 +23,8 @@ export class PatientsTableComponent implements OnInit {
   @Output() selectionChange = new EventEmitter<IPatient[]>();
   @Output() reload = new EventEmitter<void>();
 
-  constructor(private patientService: PatientService, private dialog: MatDialog) {}
+  constructor(private patientService: PatientService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.patientService.getPatients().subscribe(data => {
@@ -40,17 +40,7 @@ export class PatientsTableComponent implements OnInit {
     });
   }
 
-  openPatientDetails(patient: IPatient) {
-    const dialogRef = this.dialog.open(PatientDialogComponent, {
-      width: '400px',
-      data: patient
-    });
-    console.log('Відкрити деталі пацієнта:', patient);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true || result === 'deleted') {
-        // якщо збережено або видалено → можна оновити таблицю
-        this.patientService.getPatients().subscribe(data => this.dataSource.data = data);
-      }
-    });
+  openPatientDetails(patient: any) {
+    this.router.navigate(['/patients', patient.id]);
   }
 }

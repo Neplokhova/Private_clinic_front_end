@@ -1,7 +1,11 @@
 
 <app-patients-table (selectionChange)="onSelectionChange($event)" ></app-patients-table>
-
+<app-create-new-patient
+  *ngIf="showPatientModal"
+  (close)="closePatientModal()"
+  (patientCreated)="onPatientCreated($event)">
+</app-create-new-patient>
 <div class="bottom-buttons">
-  <button matButton="tonal" (click)="openCreateDialog()">Додати пацієнта</button>
+  <button matButton="tonal" (click)="openPatientModal()">Додати пацієнта</button>
 
 </div>

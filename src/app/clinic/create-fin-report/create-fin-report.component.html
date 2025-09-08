@@ -46,14 +46,14 @@
   <ng-container matColumnDef="price">
     <th mat-header-cell *matHeaderCellDef style ="text-align: center">Ціна (грн)</th>
     <td mat-cell *matCellDef="let row" style ="text-align: center">{{row.price }}</td>
-    <td mat-footer-cell *matFooterCellDef>{{ totalPrice}}</td>
+    <td mat-footer-cell *matFooterCellDef style ="text-align: center">{{ totalPrice}}</td>
   </ng-container>
 
 
   <ng-container matColumnDef="discountedPrice">
     <th mat-header-cell *matHeaderCellDef style ="text-align: center">Ціна зі знижкою (грн)</th>
     <td mat-cell *matCellDef="let row" style ="text-align: center">{{row.discountedPrice}}</td>
-    <td mat-footer-cell *matFooterCellDef>{{ totalDiscountedPrice}}</td>
+    <td mat-footer-cell *matFooterCellDef style ="text-align: center">{{ totalDiscountedPrice}}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,5 +1,10 @@
     <mat-nav-list>
       <div class="menu-top">
+        <a mat-list-item (click)="navigateToMainPage()" [class.active]="activeMenu === 'mainPage'">
+          <mat-icon>home</mat-icon>
+          Головна сторінка
+        </a>
+
       <a mat-list-item (click)="navigateToPatientCrud()" [class.active]="activeMenu === 'patients'">
         <mat-icon>people</mat-icon>
         Пацієнти

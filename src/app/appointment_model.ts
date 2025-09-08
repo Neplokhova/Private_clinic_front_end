@@ -11,6 +11,8 @@ export interface IAppointment {
   diagnosisDescription?: string;
   treatmentDescription?: string;
   services?: Service[];
+  basicPrice?: number;
+  price?: number;
 }
 
 export interface INewAppointmentDto {

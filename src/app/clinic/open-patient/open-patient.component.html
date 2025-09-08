@@ -1,0 +1,66 @@
+<div class="patient-edit-form" *ngIf="patient">
+  <h2>Редагування пацієнта</h2>
+
+  <!-- ПІБ у рядку -->
+  <div class="form-row">
+    <div class="form-group">
+      <label>Прізвище</label>
+      <input type="text" [(ngModel)]="patient.lastName">
+    </div>
+
+    <div class="form-group">
+      <label>Ім'я</label>
+      <input type="text" [(ngModel)]="patient.firstName">
+    </div>
+
+    <div class="form-group">
+      <label>По-батькові</label>
+      <input type="text" [(ngModel)]="patient.middleName">
+    </div>
+  </div>
+
+  <!-- Рік народження + Знижка -->
+  <div class="form-row">
+    <div class="form-group short">
+      <label>Рік народження</label>
+      <input type="number" [(ngModel)]="patient.birthYear" (ngModelChange)="calculateDiscount()">
+    </div>
+
+    <div class="discount-label">
+      {{ discountText }}
+    </div>
+  </div>
+
+  <!-- Звернення -->
+  <h3>Звернення пацієнта</h3>
+  <div class="accordion-container">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let visit of appointments">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ visit.date | date:'shortDate' }} — <strong>Діагноз: </strong> {{ visit.diagnosis }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="visit-details">
+          <p>Лікар {{ visit.doctor.lastName }} {{ visit.doctor.firstName }}</p>
+          <p *ngIf="visit.diagnosisDescription"><strong>Опис діагнозу:</strong> {{ visit.diagnosisDescription }}</p>
+          <p *ngIf="visit.treatmentDescription"><strong>Опис лікування:</strong> {{ visit.treatmentDescription }}</p>
+          <ul *ngIf="visit.services && visit.services.length">
+            <li *ngFor="let s of visit.services">
+              {{ s.name }} — {{ s.price }} грн
+            </li>
+          </ul>
+          <p><strong>Загальна вартість:</strong> {{ visit.basicPrice }} грн</p>
+          <p><strong>Вартість з урахуванням знижки:</strong> {{ visit.price }} грн</p>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <!-- Кнопки завжди внизу -->
+  <div class="buttons">
+    <button (click)="deletePatient()">Видалити пацієнта</button>
+    <button (click)="saveChanges()">Зберегти зміни</button>
+  </div>
+</div>
