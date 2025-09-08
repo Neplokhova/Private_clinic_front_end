@@ -10,7 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { ReportService } from '../../services/report.service';
 import {IProvidedService} from "../../provided_service_model";
-
+import { MatSortModule, MatSort } from '@angular/material/sort';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-create-fin-report',
@@ -24,7 +25,8 @@ import {IProvidedService} from "../../provided_service_model";
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSortModule
   ],
   templateUrl: './create-fin-report.component.html',
   styleUrl: './create-fin-report.component.css'
@@ -35,6 +37,8 @@ export class CreateFinReportComponent implements OnInit {
   startDate: string = ''; // формат yyyy-MM-dd для <input type="date">
   endDate: string = '';
   category: string = 'all';
+
+  @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = [
     'serviceName',
@@ -53,6 +57,7 @@ export class CreateFinReportComponent implements OnInit {
   ngOnInit(): void {
     this.reportService.getReports().subscribe(data => {
       this.updateTable(data);
+      this.dataSource.sort = this.sort;
     });
   }
 
@@ -71,6 +76,7 @@ export class CreateFinReportComponent implements OnInit {
       .subscribe({
         next: (data: IProvidedService[]) => {
           this.updateTable(data);
+          this.dataSource.sort = this.sort;
         },
         error: (err) => {
           console.error('Помилка завантаження звіту', err);

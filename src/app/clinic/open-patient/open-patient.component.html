@@ -38,12 +38,12 @@
       <mat-expansion-panel *ngFor="let visit of appointments">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{ visit.date | date:'shortDate' }} — <strong>Діагноз: </strong> {{ visit.diagnosis }}
+            {{ visit.date | date:'shortDate' }} — <strong>Діагноз  -- </strong> {{ visit.diagnosis }}
           </mat-panel-title>
         </mat-expansion-panel-header>
 
         <div class="visit-details">
-          <p>Лікар {{ visit.doctor.lastName }} {{ visit.doctor.firstName }}</p>
+          <p>Лікар -- {{ visit.doctor.speciality }} -- {{ visit.doctor.lastName }} {{ visit.doctor.firstName }} {{ visit.doctor.middleName }}  </p>
           <p *ngIf="visit.diagnosisDescription"><strong>Опис діагнозу:</strong> {{ visit.diagnosisDescription }}</p>
           <p *ngIf="visit.treatmentDescription"><strong>Опис лікування:</strong> {{ visit.treatmentDescription }}</p>
           <ul *ngIf="visit.services && visit.services.length">
